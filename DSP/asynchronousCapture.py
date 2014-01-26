@@ -1,7 +1,4 @@
 import pyaudio
-import numpy
-import scipy
-import time
 import sys
 
 
@@ -31,6 +28,10 @@ if default_host_api['deviceCount'] != pyaudio.paNoDevice:
             print "No Input Devices Available"
         else:
             print "\n%d Input Devices Found\n" % (len(input_devices))
+else:
+    print "No Available Devices under Host API %s" % default_host_api['name']
+    p.terminate()
+    sys.exit(1)
 
 selected_input = raw_input("Select by index: ")
 
