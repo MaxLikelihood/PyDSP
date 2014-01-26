@@ -1,4 +1,3 @@
-import matplotlib.pyplot
 import pyaudio
 import numpy
 import scipy
@@ -83,7 +82,6 @@ stream = p.open(rate = input_sampling_rate,
 print "\nStarting Stream"
 stream.start_stream()
 
-time.sleep(1)
 
 print "\nClosing Stream"
 stream.close()
