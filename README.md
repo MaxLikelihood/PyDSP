@@ -10,4 +10,7 @@ Note
 ==============================
 This repository may also contain additional codeblocks that are needed for the software development. Individual documentations can be located.
 
+License
+==============================
+MIT
 [1]: http://people.csail.mit.edu/hubert/pyaudio/ "PyAudio Mainpage"
