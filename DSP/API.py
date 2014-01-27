@@ -47,7 +47,7 @@ class audio(object):
                     else:
                         print "\nInvalid Stream Parameters"
 
-    def terminate(self):
+    def destroy(self):
         if not audio.__instantiate:
             return
         # close active stream before termination
