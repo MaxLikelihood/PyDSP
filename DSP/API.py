@@ -96,3 +96,5 @@ class audio(object):
                                        frames_per_buffer = config_audio.frames_per_buffer,
                                        start = True,
                                        stream_callback = self.callback)
+            audio.active = True
+            
