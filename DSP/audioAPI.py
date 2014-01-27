@@ -10,15 +10,15 @@ class audioAPI(object):
         # locate host_api by name provided in config
         self.host_api_index = self.findHostAPI()
         if self.host_api_index == -1:
-            print "Invalid Host API: %s" % config.host_api
+            print "\nInvalid Host API: %s" % config.host_api
         else:
-            print "Valid Host API: %s" % config.host_api
+            print "\nValid Host API: %s" % config.host_api
             # locate host_api_device by name provided in config
             self.host_api_device_index = self.findDevice()
             if self.host_api_device_index == -1:
-                print "Invalid Host API Device: %s" % config.host_api_device
+                print "\nInvalid Host API Device: %s" % config.host_api_device
             else:
-                print "Valid Host API Device: %s" % config.host_api_device
+                print "\nValid Host API Device: %s" % config.host_api_device
                 try:
                     self.supported = self.p.is_format_supported(rate = config.sampling_rate,
                                                                 input_device = self.host_api_device_index,
