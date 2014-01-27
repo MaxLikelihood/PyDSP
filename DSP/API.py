@@ -10,6 +10,9 @@ class audio(object):
     instantiate = False
 
     def setup(self):
+        if self.instantiate:
+            # avoid duplicated invocation
+            return
         # instantiate PyAudio
         self.p = pyaudio.PyAudio()
         # locate host_api by name provided in config
