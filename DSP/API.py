@@ -4,7 +4,10 @@ import time
 
 class audio(object):
 
+    # indicate stream active/inactive
     active = False
+    # indicate PyAudio instantiation status
+    instantiate = False
 
     def instantiate(self):
         # instantiate PyAudio
