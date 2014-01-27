@@ -128,5 +128,8 @@ class audio(object):
     def get_data(self):
         return audio.__data
 
+    def get_data_length(self):
+        return len(audio.__data)
+
     def clear_data(self):
         audio.__data = []
