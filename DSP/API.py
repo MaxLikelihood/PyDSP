@@ -2,7 +2,9 @@ import pyaudio
 import config
 import time
 
-class audioAPI(object):
+class audio(object):
+
+    active = False
 
     def instantiate(self):
         # instantiate PyAudio
