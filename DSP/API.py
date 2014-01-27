@@ -5,13 +5,12 @@ import time
 class audio(object):
 
     # indicate stream active/inactive
-    active = False
+    __active = False
     # indicate PyAudio instantiation status
-    instantiate = False
-
+    __instantiate = False
 
     def setup(self):
-        if audio.instantiate:
+        if audio.__instantiate:
             # avoid duplicated invocation
             return
         # instantiate PyAudio
@@ -41,7 +40,7 @@ class audio(object):
                 finally:
                     if self.supported:
                         print "\nConfiguration Valid"
-                        audio.instantiate = True
+                        audio.__instantiate = True
                     else:
                         print "\nInvalid Stream Parameters"
 
@@ -50,7 +49,7 @@ class audio(object):
         self.__close_stream()
         # terminate PyAudio
         self.p.terminate()
-        audio.instantiate = False
+        audio.__instantiate = False
 
     def __findHostAPI(self):
         # locate the host api specified in config
@@ -85,7 +84,7 @@ class audio(object):
         return (None, pyaudio.paContinue)
 
     def __start_stream(self):
-        if audio.active:
+        if audio.__active:
             # prevent duplicated stream opening
             return
         else:
@@ -99,20 +98,20 @@ class audio(object):
                                        frames_per_buffer = config_audio.frames_per_buffer,
                                        start = True,
                                        stream_callback = self.callback)
-            audio.active = True
+            audio.__active = True
 
     def __close_stream(self):
-        if not audio.active:
+        if not audio.__active:
             # prevent duplicated stream closing
             return
         else:
             audio.stream.close()
-            audio.active = False
+            audio.__active = False
 
     def start_capture(self):
-        if audio.instantiate:
+        if audio.__instantiate:
             self.__start_stream()
 
     def stop_capture(self):
-        if audio.instantiate:
+        if audio.__instantiate:
             self.__close_stream()
