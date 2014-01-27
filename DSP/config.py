@@ -2,13 +2,13 @@ import pyaudio
 
 class config(object):
 
-    global host_API
-    global sampling_Rate
-    global input_Channels
-    global sampling_Format
-    
+    global host_api
+    global sampling_rate
+    global input_channels
+    global sampling_format
+
     def __init__(self):
-        self.host_API = 'ALSA'
-        self.sampling_Rate = 44100
-        self.input_Channels = 1
-        self.sampling_Format = pyaudio.paFloat32
+        self.host_api = 'ALSA'
+        self.sampling_rate = 44100
+        self.input_channels = 1
+        self.sampling_format = pyaudio.paFloat32
