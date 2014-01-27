@@ -38,10 +38,11 @@ class audio(object):
                 except ValueError as detail:
                     print "\nError Code: %d\nExplanation: %s" % (detail[1], detail[0])
                 finally:
-                    if self.supported == False:
-                        print "\nInvalid Stream Parameters"
-                    else:
+                    if self.supported:
                         print "\nConfiguration Valid"
+                        self.instantiate = True
+                    else:
+                        print "\nInvalid Stream Parameters"
 
     def terminate(self):
         # terminate PyAudio
