@@ -9,7 +9,7 @@ class audio(object):
     # indicate PyAudio instantiation status
     instantiate = False
 
-    def instantiate(self):
+    def setup(self):
         # instantiate PyAudio
         self.p = pyaudio.PyAudio()
         # locate host_api by name provided in config
