@@ -85,7 +85,7 @@ class audio(object):
                 return -1
 
     # define callback function
-    def callback(self, in_data, frame_count, time_info, status_flags):
+    def __callback(self, in_data, frame_count, time_info, status_flags):
         audio.__data.append({'frame_data': in_data,
                              'frame_count': frame_count,
                              'frame_time': 0.0,
@@ -106,7 +106,7 @@ class audio(object):
                                        output_device_index = None,
                                        frames_per_buffer = config_audio.frames_per_buffer,
                                        start = True,
-                                       stream_callback = self.callback)
+                                       stream_callback = self.__callback)
             audio.__active = True
 
     def __close_stream(self):
