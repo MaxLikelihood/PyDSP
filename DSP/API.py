@@ -108,4 +108,8 @@ class audio(object):
             audio.stream.close()
             audio.active = False
 
+    def start_capture(self):
+        self.__start_stream()
 
+    def stop_capture(self):
+        self.__close_stream()
