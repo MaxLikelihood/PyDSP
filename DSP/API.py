@@ -9,6 +9,7 @@ class audio(object):
     # indicate PyAudio instantiation status
     instantiate = False
 
+
     def setup(self):
         if audio.instantiate:
             # avoid duplicated invocation
@@ -40,7 +41,7 @@ class audio(object):
                 finally:
                     if self.supported:
                         print "\nConfiguration Valid"
-                        self.instantiate = True
+                        audio.instantiate = True
                     else:
                         print "\nInvalid Stream Parameters"
 
@@ -75,3 +76,24 @@ class audio(object):
                     return i
             else:
                 return -1
+
+    # define callback function
+    def callback(in_data, frame_count, time_info, status_flags):
+        return (None, pyaudio.paContinue)
+
+    def __start_stream(self):
+        if audio.active:
+            # prevent duplicated stream opening
+            return
+        else:
+            audio.stream = self.p.open(rate = config_audio.sampling_rate,
+                                       channels = config_audio.input_channels,
+                                       format = config_audio.sampling_format,
+                                       input = True,
+                                       output = False,
+                                       input_device_index = self.host_api_device_index,
+                                       output_device_index = None,
+                                       frames_per_buffer = config_audio.frames_per_buffer,
+                                       start = False,
+                                       stream_callback = self.callback)
+
