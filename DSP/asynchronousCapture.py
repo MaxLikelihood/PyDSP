@@ -83,6 +83,7 @@ stream = p.open(rate = input_sampling_rate,
 print "\nStarting Stream"
 stream.start_stream()
 
+#stream active region
 
 print "\nClosing Stream"
 stream.close()
