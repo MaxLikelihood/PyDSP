@@ -97,4 +97,13 @@ class audio(object):
                                        start = True,
                                        stream_callback = self.callback)
             audio.active = True
-            
+
+    def __close_stream(self):
+        if not audio.active:
+            # prevent duplicated stream closing
+            return
+        else:
+            audio.stream.close()
+            audio.active = False
+
+
