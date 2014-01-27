@@ -48,6 +48,8 @@ class audio(object):
                         print "\nInvalid Stream Parameters"
 
     def terminate(self):
+        if not audio.__instantiate:
+            return
         # close active stream before termination
         self.__close_stream()
         # terminate PyAudio
