@@ -10,7 +10,7 @@ class audio(object):
     __instantiate = False
 
     # audio data represented as a list of dictionaries
-    __dict = []
+    __data = []
 
     def setup(self):
         if audio.__instantiate:
@@ -86,6 +86,10 @@ class audio(object):
 
     # define callback function
     def callback(self, in_data, frame_count, time_info, status_flags):
+        audio.__data.append({'frame_data': in_data,
+                             'frame_count': frame_count,
+                             'frame_time': 0.0,
+                             'frame_position': 0 }) # stepper motor position
         return (None, pyaudio.paContinue)
 
     def __start_stream(self):
