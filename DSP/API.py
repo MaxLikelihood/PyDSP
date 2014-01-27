@@ -9,6 +9,9 @@ class audio(object):
     # indicate PyAudio instantiation status
     __instantiate = False
 
+    # audio data represented as a list of dictionaries
+    __dict = []
+
     def setup(self):
         if audio.__instantiate:
             # avoid duplicated invocation
