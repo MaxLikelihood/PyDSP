@@ -94,6 +94,5 @@ class audio(object):
                                        input_device_index = self.host_api_device_index,
                                        output_device_index = None,
                                        frames_per_buffer = config_audio.frames_per_buffer,
-                                       start = False,
+                                       start = True,
                                        stream_callback = self.callback)
-
