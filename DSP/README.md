@@ -17,6 +17,7 @@ For example usage, see `apiExample.py`
 config.py
 ---------------------------------------------
 Configuration file for project
+
 Audio Configuration:
 
     host_api
