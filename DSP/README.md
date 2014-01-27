@@ -14,6 +14,19 @@ API wrapper for [PyAudio][1], providing simplified user-interface and integratio
 
 For example usage, see `apiExample.py`
 
+config.py
+---------------------------------------------
+Configuration file for project
+Audio Configuration:
+
+    host_api
+    host_api_device
+    sampling_rate
+    input_channels
+    sampling_format
+    frames_per_buffer
+    
+
 queryHostAPI.py
 ---------------------------------------------
 Perform standard query on all available Host APIs, displays:
