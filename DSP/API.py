@@ -120,3 +120,9 @@ class audio(object):
     def stop_capture(self):
         if audio.__instantiate:
             self.__close_stream()
+
+    def get_data(self):
+        return audio.__data
+
+    def clear_data(self):
+        audio.__data = []
