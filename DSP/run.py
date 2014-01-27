@@ -1,1 +1,8 @@
-__author__ = 'fjin1'
+from API import audio
+
+api = audio()
+
+api.setup()
+
+api.terminate()
+
