@@ -50,6 +50,7 @@ class audio(object):
         self.__close_stream()
         # terminate PyAudio
         self.p.terminate()
+        audio.instantiate = False
 
     def __findHostAPI(self):
         # locate the host api specified in config
@@ -109,7 +110,9 @@ class audio(object):
             audio.active = False
 
     def start_capture(self):
-        self.__start_stream()
+        if audio.instantiate:
+            self.__start_stream()
 
     def stop_capture(self):
-        self.__close_stream()
+        if audio.instantiate:
+            self.__close_stream()
