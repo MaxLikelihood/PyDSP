@@ -80,7 +80,7 @@ class audio(object):
                 return -1
 
     # define callback function
-    def callback(in_data, frame_count, time_info, status_flags):
+    def callback(self, in_data, frame_count, time_info, status_flags):
         return (None, pyaudio.paContinue)
 
     def __start_stream(self):
