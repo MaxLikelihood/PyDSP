@@ -2,7 +2,7 @@ Digital Signal Processing (DSP) Codeblocks
 =============================================
 API.py
 ---------------------------------------------
-API wrapper for [PyAudio][1], providing simplified user-interface and integration with 'config.py'. Available functionalities include:
+API wrapper for [PyAudio][1], providing simplified user-interface and integration with `config.py`. Available functionalities include:
 
 -   `setup()` - initialize the API object, required before any further interaction
 -   `destroy()` - destroy the API object, previously initialized through  `setup()`, no further interaction allowed
