@@ -12,6 +12,10 @@ API wrapper for [PyAudio][1], providing simplified user-interface and integratio
 -   `get_data_length()` - retrieve length of captured audio data
 -   `clear_data()` - clear captured audio data, possibly for fresh capture
 
+Captured audio data has the following type:
+
+`[{'frame_data': string, 'frame_count': int, 'frame_time': float, 'frame_position': int}, ... ]`
+
 For example usage, see `apiExample.py`
 
 config.py
