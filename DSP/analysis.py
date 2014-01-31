@@ -1,5 +1,6 @@
 from config import audio as config_audio
 import numpy
+import scipy
 from scipy import signal
 from scipy.fftpack import rfft
 
@@ -80,5 +81,20 @@ class audio(object):
 
         for i in range(len(data)):
             data[i]['frame_magn'] = abs(data[i]['frame_rfft'])
+
+    @staticmethod
+    def __magn_to_db(data):
+        # Convert from linear magnitude to decibel scale in place & update corresponding 'frame_magn' value in dictionary
+        # Parameters: data: [{'frame_data': string,
+        #                     'frame_count': int,
+        #                     'frame_time': float,
+        #                     'frame_position': int,
+        #                     'frame_decoded': type,
+        #                     'frame_windowed': type,
+        #                     'frame_rfft': type,
+        #                     'frame_magn': type}, ...]
+
+        for i in range(len(data)):
+            data[i]['frame_magn'] = 20 * scipy.log10(data[i]['frame_magn'])
 
     
