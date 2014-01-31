@@ -9,5 +9,5 @@ class audio(object):
     input_channels = 1
     sampling_format = pyaudio.paFloat32
     decoding_format = 'Float32'
-    frame_window = 'Hann'
+    frame_window = 'hann'
     frames_per_buffer = 1024
