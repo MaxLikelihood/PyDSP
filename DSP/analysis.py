@@ -54,6 +54,12 @@ class audio(object):
         # Decode & window raw audio data
         audio.__decode_data(data)
         audio.__window_data(data)
+        # Perform rfft on windowed data
+        audio.__rfft_data(data)
+        # Compute magnitude from rfft coefficients
+        audio.__magn_data(data)
+        # Convert linear magnitude to decibel scale
+        audio.__magn_to_db(data)
 
     @staticmethod
     def __rfft_data(data):
@@ -97,4 +103,3 @@ class audio(object):
         for i in range(len(data)):
             data[i]['frame_magn'] = 20 * scipy.log10(data[i]['frame_magn'])
 
-    
