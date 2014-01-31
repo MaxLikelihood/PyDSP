@@ -21,13 +21,17 @@ class audio(object):
         # locate host_api by name provided in config
         self.host_api_index = self.__findHostAPI()
         if self.host_api_index == -1:
+            # specified host_api in config is unavailable
             print "\nInvalid Host API: %s" % config_audio.host_api
+            self.p.terminate()
         else:
             print "\nValid Host API: %s" % config_audio.host_api
             # locate host_api_device by name provided in config
             self.host_api_device_index = self.__findDevice()
             if self.host_api_device_index == -1:
+                # specified host_api_device in config is unavailable under host_api
                 print "\nInvalid Host API Device: %s" % config_audio.host_api_device
+                self.p.terminate()
             else:
                 print "\nValid Host API Device: %s" % config_audio.host_api_device
                 try:
@@ -46,6 +50,7 @@ class audio(object):
                         audio.__instantiate = True
                     else:
                         print "\nInvalid Stream Parameters"
+                        self.p.terminate()
 
     def destroy(self):
         if not audio.__instantiate:
