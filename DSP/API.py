@@ -49,6 +49,7 @@ class audio(object):
                         print "\nConfiguration Valid"
                         audio.__instantiate = True
                     else:
+                        # specified audio stream parameters are not compatible
                         print "\nInvalid Stream Parameters"
                         self.p.terminate()
 
