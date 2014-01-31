@@ -61,10 +61,24 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': type
+        #                     'frame_decoded': type,
         #                     'frame_windowed': type}, ...]
 
         for i in range(len(data)):
             data[i]['frame_rfft'] = rfft(data[i]['frame_windowed'])
 
+    @staticmethod
+    def __magn_data(data):
+        # Convert complex rfft coefficients to magnitude & store as new key:value pair in dictionary
+        # Parameters: data: [{'frame_data': string,
+        #                     'frame_count': int,
+        #                     'frame_time': float,
+        #                     'frame_position': int,
+        #                     'frame_decoded': type,
+        #                     'frame_windowed': type,
+        #                     'frame_rfft': type}, ...]
 
+        for i in range(len(data)):
+            data[i]['frame_magn'] = abs(data[i]['frame_rfft'])
+
+    
