@@ -46,4 +46,8 @@ class audio(object):
         for i in range(len(data)):
             data[i]['frame_windowed'] = data[i]['frame_decoded'][:] * window
 
-        
+    @staticmethod
+    def analyze(data):
+        # Decode & window raw audio data
+        audio.__decode_data(data)
+        audio.__window_data(data)
