@@ -1,4 +1,5 @@
 from config import audio as config_audio
+from config import analysis as config_analysis
 import numpy
 import scipy
 from scipy import signal
@@ -17,7 +18,7 @@ class audio(object):
         # decode according to specified type in config
         for i in range(len(data)):
             data[i]['frame_decoded'] = numpy.fromstring(data[i]['frame_data'],
-                                                        dtype = config_audio.decoding_format,
+                                                        dtype = config_analysis.decoding_format,
                                                         count = data[i]['frame_count'])
 
     @staticmethod
@@ -30,15 +31,15 @@ class audio(object):
         #                     'frame_decoded': type}, ...]
 
         # cache window function
-        if 'hann' == config_audio.frame_window:
+        if 'hann' == config_analysis.frame_window:
             window = signal.hann(config_audio.frames_per_buffer)
-        elif 'hamming' == config_audio.frame_window:
+        elif 'hamming' == config_analysis.frame_window:
             window = signal.hamming(config_audio.frames_per_buffer)
-        elif 'blackman' == config_audio.frame_window:
+        elif 'blackman' == config_analysis.frame_window:
             window = signal.blackman(config_audio.frames_per_buffer)
-        elif 'bartlett' == config_audio.frame_window:
+        elif 'bartlett' == config_analysis.frame_window:
             window = signal.bartlett(config_audio.frames_per_buffer)
-        elif 'barthann' == config_audio.frame_window:
+        elif 'barthann' == config_analysis.frame_window:
             window = signal.barthann(config_audio.frames_per_buffer)
         else:
             # window function unavailable

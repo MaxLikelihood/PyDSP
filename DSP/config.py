@@ -8,6 +8,9 @@ class audio(object):
     sampling_rate = 44100
     input_channels = 1
     sampling_format = pyaudio.paFloat32
+    frames_per_buffer = 1024
+
+class analysis(object):
+
     decoding_format = 'Float32'
     frame_window = 'hann'
-    frames_per_buffer = 1024
