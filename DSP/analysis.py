@@ -66,6 +66,8 @@ class audio(object):
         audio.__magn_data(data)
         # Convert linear magnitude to decibel scale
         audio.__magn_to_db(data)
+        # Populate mapping variables for specified sampling policy
+        audio.__fill_rfft_mapping()
 
     @staticmethod
     def __rfft_data(data):
