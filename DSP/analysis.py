@@ -12,7 +12,6 @@ class audio(object):
     # mapping of frequencies to corresponding rfft bin indexes
     __rfft_bin_index = []
 
-
     @staticmethod
     def __decode_data(data):
         # Decode & store decoded audio data as new key:value pair in dictionary
@@ -110,3 +109,14 @@ class audio(object):
         for i in range(len(data)):
             data[i]['frame_magn'] = 20 * scipy.log10(data[i]['frame_magn'])
 
+
+    @staticmethod
+    def __fill_rfft_mapping():
+        # Populate mapping variables with corresponding frequencies and bin indexes
+        for i in range(config_audio.frames_per_buffer / 2):
+            audio.__rfft_freq_index.append(int(round(i * config_audio.sampling_rate / float(config_audio.frames_per_buffer))))
+
+        for i in range(config_audio.sampling_rate / 2 - config_audio.sampling_rate / config_audio.frames_per_buffer):
+            audio.__rfft_bin_index.append(int(round(i * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
+
+    
