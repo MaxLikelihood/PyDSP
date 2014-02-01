@@ -7,6 +7,12 @@ from scipy.fftpack import rfft
 
 class audio(object):
 
+    # mapping of rfft bin indexes to corresponding frequencies
+    __rfft_freq_index = []
+    # mapping of frequencies to corresponding rfft bin indexes
+    __rfft_bin_index = []
+
+
     @staticmethod
     def __decode_data(data):
         # Decode & store decoded audio data as new key:value pair in dictionary
