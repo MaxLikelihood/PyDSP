@@ -33,7 +33,7 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': type}, ...]
+        #                     'frame_decoded': list}, ...]
 
         # cache window function
         if 'hann' == config_analysis.frame_window:
@@ -76,8 +76,8 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': type,
-        #                     'frame_windowed': type}, ...]
+        #                     'frame_decoded': list,
+        #                     'frame_windowed': list}, ...]
 
         for i in range(len(data)):
             data[i]['frame_rfft'] = rfft(data[i]['frame_windowed'])
@@ -89,9 +89,9 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': type,
-        #                     'frame_windowed': type,
-        #                     'frame_rfft': type}, ...]
+        #                     'frame_decoded': list,
+        #                     'frame_windowed': list,
+        #                     'frame_rfft': list}, ...]
 
         for i in range(len(data)):
             data[i]['frame_magn'] = abs(data[i]['frame_rfft'])
@@ -103,10 +103,10 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': type,
-        #                     'frame_windowed': type,
-        #                     'frame_rfft': type,
-        #                     'frame_magn': type}, ...]
+        #                     'frame_decoded': list,
+        #                     'frame_windowed': list,
+        #                     'frame_rfft': list,
+        #                     'frame_magn': list}, ...]
 
         for i in range(len(data)):
             data[i]['frame_magn'] = 20 * scipy.log10(data[i]['frame_magn'])
@@ -138,4 +138,3 @@ class audio(object):
             return audio.__rfft_freq_index[bin]
 
 
-    
