@@ -94,7 +94,7 @@ class audio(object):
     def __callback(self, in_data, frame_count, time_info, status_flags):
         audio.__data.append({'frame_data': in_data,
                              'frame_count': frame_count,
-                             'frame_time': 0.0,
+                             'frame_time': time.time() - audio.__time,
                              'frame_position': 0 }) # stepper motor position
         return (None, pyaudio.paContinue)
 
@@ -114,6 +114,7 @@ class audio(object):
                                        start = True,
                                        stream_callback = self.__callback)
             audio.__active = True
+            audio.__time = time.time()
 
     def __close_stream(self):
         if not audio.__active:
