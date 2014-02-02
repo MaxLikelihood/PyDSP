@@ -116,12 +116,12 @@ class audio(object):
     def __fill_rfft_mapping():
         # Populate mapping variables with corresponding frequencies and bin indexes
         audio.__rfft_freq_index = []
-        for i in range(config_audio.frames_per_buffer / 2):
-            audio.__rfft_freq_index.append(int(round(i * config_audio.sampling_rate / float(config_audio.frames_per_buffer))))
+        for i in range(config_audio.frames_per_buffer):
+            audio.__rfft_freq_index.append(int(round(i * config_audio.sampling_rate / 2 / float(config_audio.frames_per_buffer))))
 
         audio.__rfft_bin_index = []
-        for i in range(config_audio.sampling_rate / 2 - config_audio.sampling_rate / config_audio.frames_per_buffer):
-            audio.__rfft_bin_index.append(int(round(i * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
+        for i in range(config_audio.sampling_rate / 2 - int(round(config_audio.sampling_rate / 2 / float(config_audio.frames_per_buffer)))):
+            audio.__rfft_bin_index.append(int(round(i * 2 * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
 
 
     @staticmethod
