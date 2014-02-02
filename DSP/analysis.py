@@ -123,4 +123,10 @@ class audio(object):
         for i in range(config_audio.sampling_rate / 2 - config_audio.sampling_rate / config_audio.frames_per_buffer):
             audio.__rfft_bin_index.append(int(round(i * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
 
-    
+
+    @staticmethod
+    def rfft_map_to_bin(freq):
+        # Returns mapping from frequency to corresponding rfft bin index
+        if 0 <= freq < len(audio.__rfft_bin_index):
+            return audio.__rfft_bin_index[freq]
+
