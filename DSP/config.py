@@ -13,4 +13,4 @@ class audio(object):
 class analysis(object):
 
     decoding_format = 'Float32'
-    frame_window = 'hann'
+    frame_window = 'hamming'
