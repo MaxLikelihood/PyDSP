@@ -1,4 +1,5 @@
 import pyaudio
+import numpy as np
 
 class audio(object):
 
@@ -12,5 +13,5 @@ class audio(object):
 
 class analysis(object):
 
-    decoding_format = 'Float32'
+    decoding_format = np.float32
     frame_window = 'hamming'
