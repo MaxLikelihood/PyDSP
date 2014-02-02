@@ -24,7 +24,7 @@ class audio(object):
         for i in range(len(data)):
             data[i]['frame_decoded'] = numpy.fromstring(data[i]['frame_data'],
                                                         dtype = config_analysis.decoding_format,
-                                                        count = data[i]['frame_count'])
+                                                        count = data[i]['frame_count']).tolist()
 
     @staticmethod
     def __window_data(data):
