@@ -130,3 +130,12 @@ class audio(object):
         if 0 <= freq < len(audio.__rfft_bin_index):
             return audio.__rfft_bin_index[freq]
 
+
+    @staticmethod
+    def rfft_map_to_frequency(bin):
+        # Returns mapping from rfft bin index to corresponding frequency
+        if 0 <= bin < len(audio.__rfft_freq_index):
+            return audio.__rfft_freq_index[bin]
+
+
+    
