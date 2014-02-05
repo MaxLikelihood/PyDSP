@@ -22,7 +22,7 @@ class audio(object):
 
         # decode according to specified type in config
         for i in range(len(data)):
-            data[i]['frame_decoded'] = numpy.fromstring(data[i]['frame_data'],
+            data[i]['frame_decoded'] = np.fromstring(data[i]['frame_data'],
                                                         dtype = config_analysis.decoding_format,
                                                         count = data[i]['frame_count'])
 
