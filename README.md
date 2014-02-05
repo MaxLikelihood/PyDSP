@@ -4,7 +4,8 @@ This repository is dedicated to Digital Signal Processing (DSP) codeblocks writt
 
 Dependency
 ==============================
-[PyAudio][1]
+[PyAudio][1] 
+[Phidgets][2]
 
 Note
 ==============================
@@ -14,3 +15,4 @@ License
 ==============================
 MIT
 [1]: http://people.csail.mit.edu/hubert/pyaudio/ "PyAudio Mainpage"
+[2]: http://www.phidgets.com/docs/Language_-_Python#Linux "Phidgets for Python" 
