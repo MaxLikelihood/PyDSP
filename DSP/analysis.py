@@ -33,7 +33,7 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': list}, ...]
+        #                     'frame_decoded': numpy.ndarray}, ...]
 
         # cache window function
         if 'hann' == config_analysis.frame_window:
@@ -76,8 +76,8 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': list,
-        #                     'frame_windowed': list}, ...]
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray}, ...]
 
         for i in range(len(data)):
             data[i]['frame_rfft'] = rfft(data[i]['frame_windowed'])
@@ -89,9 +89,9 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': list,
-        #                     'frame_windowed': list,
-        #                     'frame_rfft': list}, ...]
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray,
+        #                     'frame_rfft': numpy.ndarray}, ...]
 
         for i in range(len(data)):
             data[i]['frame_magn'] = abs(data[i]['frame_rfft'])
@@ -103,10 +103,10 @@ class audio(object):
         #                     'frame_count': int,
         #                     'frame_time': float,
         #                     'frame_position': int,
-        #                     'frame_decoded': list,
-        #                     'frame_windowed': list,
-        #                     'frame_rfft': list,
-        #                     'frame_magn': list}, ...]
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray,
+        #                     'frame_rfft': numpy.ndarray,
+        #                     'frame_magn': numpy.ndarray}, ...]
 
         for i in range(len(data)):
             data[i]['frame_magn'] = 20 * scipy.log10(data[i]['frame_magn'])
