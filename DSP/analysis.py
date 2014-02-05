@@ -1,6 +1,6 @@
 from config import audio as config_audio
 from config import analysis as config_analysis
-import numpy
+import numpy as np
 import scipy
 from scipy import signal
 from scipy.fftpack import rfft, rfftfreq
@@ -94,7 +94,15 @@ class audio(object):
         #                     'frame_rfft': numpy.ndarray}, ...]
 
         for i in range(len(data)):
-            data[i]['frame_magn'] = abs(data[i]['frame_rfft'])
+            rfft_bin = np.append(0, data[i]['frame_rfft'])
+            if data[i]['frame_rfft'].size % 2 == 0:
+                rfft_bin = np.append(rfft_bin, 0)
+
+            magnitude = []
+            for j in range(0, rfft_bin.size, 2):
+                magnitude.append(rfft_bin[j] * rfft_bin[j] + rfft_bin[j+1] * rfft_bin[j+1])
+
+            data[i]['frame_magn'] = np.asarray(magnitude)
 
     @staticmethod
     def __magn_to_db(data):
