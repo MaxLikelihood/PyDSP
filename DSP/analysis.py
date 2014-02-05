@@ -3,7 +3,7 @@ from config import analysis as config_analysis
 import numpy
 import scipy
 from scipy import signal
-from scipy.fftpack import rfft
+from scipy.fftpack import rfft, rfftfreq
 
 class audio(object):
 
@@ -116,12 +116,18 @@ class audio(object):
     def __fill_rfft_mapping():
         # Populate mapping variables with corresponding frequencies and bin indexes
         audio.__rfft_freq_index = []
-        for i in range(config_audio.frames_per_buffer):
-            audio.__rfft_freq_index.append(int(round(i * config_audio.sampling_rate / 2 / float(config_audio.frames_per_buffer))))
+
+        sample_frequencies = rfftfreq(config_audio.frames_per_buffer, 1 / float(config_audio.sampling_rate)).tolist()
+
+        for i in range(len(sample_frequencies)):
+            sample_frequencies[i] = int(round(sample_frequencies[i]))
+            if sample_frequencies[i] not in audio.__rfft_freq_index:
+                audio.__rfft_freq_index.append(sample_frequencies[i])
 
         audio.__rfft_bin_index = []
-        for i in range(config_audio.sampling_rate / 2 - int(round(config_audio.sampling_rate / 2 / float(config_audio.frames_per_buffer)))):
-            audio.__rfft_bin_index.append(int(round(i * 2 * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
+
+        for i in range(config_audio.sampling_rate / 2 + 1):
+            audio.__rfft_bin_index.append(int(round(i * config_audio.frames_per_buffer / float(config_audio.sampling_rate))))
 
 
     @staticmethod
