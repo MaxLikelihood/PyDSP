@@ -28,6 +28,6 @@ class plotter(object):
             y.append(data[i][y_dataset][bin_index])
 
         plt.plot(x, y)
-        plt.show()
+        plt.show(block = False)
 
 
