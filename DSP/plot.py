@@ -28,6 +28,17 @@ class plotter(object):
             y.append(data[i][y_dataset][bin_index])
 
         plt.plot(x, y)
+
+        if 'frame_time' == x_dataset:
+            plt.xlabel("Time")
+        elif 'frame_position' == x_dataset:
+            plt.xlabel("Position")
+
+        if 'frame_magn' == y_dataset:
+            plt.ylabel("Magnitude")
+
+        plt.title("Frequency " + str(frequency) + " Hz")
+
         plt.show(block = False)
 
 
