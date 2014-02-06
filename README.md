@@ -6,6 +6,7 @@ Dependency
 ==============================
 [PyAudio][1] 
 [Phidgets][2]
+[matplotlib[3]
 
 Note
 ==============================
@@ -16,3 +17,4 @@ License
 MIT
 [1]: http://people.csail.mit.edu/hubert/pyaudio/ "PyAudio Mainpage"
 [2]: http://www.phidgets.com/docs/Language_-_Python#Linux "Phidgets for Python" 
+[3]: http://matplotlib.org/index.html "matplotlib Mainpage"
