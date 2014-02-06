@@ -6,7 +6,7 @@ Dependency
 ==============================
 [PyAudio][1] 
 [Phidgets][2]
-[matplotlib[3]
+[matplotlib][3]
 
 Note
 ==============================
