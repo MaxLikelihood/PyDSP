@@ -7,6 +7,8 @@ Dependency
 [PyAudio][1] 
 [Phidgets][2]
 [matplotlib][3]
+[numpy][4]
+[SciPy][5]
 
 Note
 ==============================
@@ -18,3 +20,5 @@ MIT
 [1]: http://people.csail.mit.edu/hubert/pyaudio/ "PyAudio Mainpage"
 [2]: http://www.phidgets.com/docs/Language_-_Python#Linux "Phidgets for Python" 
 [3]: http://matplotlib.org/index.html "matplotlib Mainpage"
+[4]: http://www.numpy.org/ "numpy Mainpage"
+[5]: http://www.scipy.org/ "SciPy Mainpage"
