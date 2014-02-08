@@ -152,3 +152,35 @@ class audio(object):
             return audio.__rfft_freq_index[bin]
 
 
+    @staticmethod
+    def get_frame_element_at_index(data, frame_element, index):
+        # Retrieve frame element of interest from data at index i
+        # Parameters: data: [{'frame_data': string,
+        #                     'frame_count': int,
+        #                     'frame_time': float,
+        #                     'frame_position': int,
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray,
+        #                     'frame_rfft': numpy.ndarray,
+        #                     'frame_magn': numpy.ndarray}, ...]
+        if 0 <= index < len(data):
+            if frame_element in data[index].keys():
+                return data[index][frame_element]
+
+
+    @staticmethod
+    def get_index_of_max_of_for_frequency(data, frame_element, frequency):
+        # Return the index of data for maximum of frame element value for frequency
+        # Parameters: data: [{'frame_data': string,
+        #                     'frame_count': int,
+        #                     'frame_time': float,
+        #                     'frame_position': int,
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray,
+        #                     'frame_rfft': numpy.ndarray,
+        #                     'frame_magn': numpy.ndarray}, ...]
+        dataset = []
+        for i in range(len(data)):
+            dataset.append(data[i][frame_element][audio.rfft_map_to_bin(frequency)])
+
+        return dataset.index(max(dataset))
