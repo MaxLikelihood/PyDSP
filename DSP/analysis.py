@@ -152,3 +152,19 @@ class audio(object):
             return audio.__rfft_freq_index[bin]
 
 
+    @staticmethod
+    def get_frame_element_at_index(data, frame_element, index):
+        # Retrieve frame element of interest from data at index i
+        # Parameters: data: [{'frame_data': string,
+        #                     'frame_count': int,
+        #                     'frame_time': float,
+        #                     'frame_position': int,
+        #                     'frame_decoded': numpy.ndarray,
+        #                     'frame_windowed': numpy.ndarray,
+        #                     'frame_rfft': numpy.ndarray,
+        #                     'frame_magn': numpy.ndarray}, ...]
+        if 0 <= index < len(data):
+            if frame_element in data[index].keys():
+                return data[index][frame_element]
+
+
