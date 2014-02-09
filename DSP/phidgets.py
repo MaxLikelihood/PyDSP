@@ -21,6 +21,11 @@ class stepper(object):
         if device.getSerialNum() == config_stepper.serial_number:
             stepper.__attachment = True
 
+    @staticmethod
+    def __DetachHandler(event):
+        device = event.device
+        if device.getSerialNum() == config_stepper.serial_number:
+            stepper.__attachment = False
 
     @staticmethod
     def setup():
