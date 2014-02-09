@@ -33,6 +33,10 @@ class stepper(object):
         stepper.__active_position = device.position
 
     @staticmethod
+    def position():
+        return stepper.__active_position
+
+    @staticmethod
     def setup():
 
         try:
