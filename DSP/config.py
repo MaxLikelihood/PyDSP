@@ -15,3 +15,8 @@ class analysis(object):
 
     decoding_format = np.float32
     frame_window = 'hamming'
+
+class stepper(object):
+
+    serial_number = 269371
+    
