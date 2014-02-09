@@ -16,6 +16,13 @@ class stepper(object):
     __virtual_position = 0
 
     @staticmethod
+    def __AttachHandler(event):
+        device = event.device
+        if device.getSerialNum() == config_stepper.serial_number:
+            stepper.__attachment = True
+
+
+    @staticmethod
     def setup():
 
         try:
@@ -24,4 +31,3 @@ class stepper(object):
             print "Runtime Error: %s" % e.message
             return
 
-        
