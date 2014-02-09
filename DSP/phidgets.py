@@ -53,4 +53,8 @@ class stepper(object):
             print "Phidget Exception %i: %s" % (e.code, e.details)
             return
 
-        
+        try:
+            stepper.motor.openPhidget(config_stepper.serial_number)
+        except PhidgetException as e:
+            print "Phidget Exception %i: %s" % (e.code, e.details)
+            return
