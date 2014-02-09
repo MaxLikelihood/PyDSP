@@ -1,16 +1,7 @@
-#!/usr/bin/env python
-
-#Basic imports
-from ctypes import *
-import sys
-from time import sleep
-import Tkinter as tk
-
-#Phidget specific imports
 from Phidgets.PhidgetException import PhidgetErrorCodes, PhidgetException
 from Phidgets.Events.Events import AttachEventArgs, DetachEventArgs, ErrorEventArgs, InputChangeEventArgs, CurrentChangeEventArgs, StepperPositionChangeEventArgs, VelocityChangeEventArgs
 from Phidgets.Devices.Stepper import Stepper
-
+from time import sleep
 
 class StepperControl():
 
