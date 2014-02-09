@@ -5,4 +5,13 @@ from time import sleep
 
 class stepper(object):
 
+    # indicate device attachment status
+    __attachment = False
+
+    # indicate device active position
+    __active_position = 0
+
+    # indicate device virtual position
+    __virtual_position = 0
+
     
