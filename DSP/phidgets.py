@@ -3,7 +3,7 @@ from Phidgets.Events.Events import AttachEventArgs, DetachEventArgs, ErrorEventA
 from Phidgets.Devices.Stepper import Stepper as Phidgets_stepper
 from time import sleep
 
-class StepperControl():
+class stepper(object):
 
     stepper = object
     position = 0
