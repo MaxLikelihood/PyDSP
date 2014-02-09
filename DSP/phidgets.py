@@ -15,3 +15,13 @@ class stepper(object):
     # indicate device virtual position
     __virtual_position = 0
 
+    @staticmethod
+    def setup():
+
+        try:
+            stepper.motor = Phidgets_stepper()
+        except RuntimeError as e:
+            print "Runtime Error: %s" % e.message
+            return
+
+        
