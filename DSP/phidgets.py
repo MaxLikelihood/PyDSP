@@ -45,3 +45,12 @@ class stepper(object):
             print "Runtime Error: %s" % e.message
             return
 
+        try:
+            stepper.motor.setOnAttachHandler(stepper.__AttachHandler)
+            stepper.motor.setOnDetachHandler(stepper.__DetachHandler)
+            stepper.motor.setOnPositionChangeHandler(stepper.__PositionHandler)
+        except PhidgetException as e:
+            print "Phidget Exception %i: %s" % (e.code, e.details)
+            return
+
+        
