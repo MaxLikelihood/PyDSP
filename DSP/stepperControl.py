@@ -1,6 +1,6 @@
 from Phidgets.PhidgetException import PhidgetErrorCodes, PhidgetException
 from Phidgets.Events.Events import AttachEventArgs, DetachEventArgs, ErrorEventArgs, InputChangeEventArgs, CurrentChangeEventArgs, StepperPositionChangeEventArgs, VelocityChangeEventArgs
-from Phidgets.Devices.Stepper import Stepper
+from Phidgets.Devices.Stepper import Stepper as Phidgets_stepper
 from time import sleep
 
 class StepperControl():
@@ -14,7 +14,7 @@ class StepperControl():
     def initialize():
         global stepper
         try:
-            stepper = Stepper()
+            stepper = Phidgets_stepper()
         except RuntimeError as e:
             print("Runtime Exception: %s" % e.details)
             print("Exiting....")
