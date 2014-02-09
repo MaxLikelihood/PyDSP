@@ -15,6 +15,9 @@ class stepper(object):
     # indicate device virtual position
     __virtual_position = 0
 
+    # indicate device open status
+    __open = False
+
     @staticmethod
     def __AttachHandler(event):
         device = event.device
@@ -38,23 +41,25 @@ class stepper(object):
 
     @staticmethod
     def setup():
+        if stepper.__open == False:
+            try:
+                stepper.motor = Phidgets_stepper()
+            except RuntimeError as e:
+                print "Runtime Error: %s" % e.message
+                return
 
-        try:
-            stepper.motor = Phidgets_stepper()
-        except RuntimeError as e:
-            print "Runtime Error: %s" % e.message
-            return
+            try:
+                stepper.motor.setOnAttachHandler(stepper.__AttachHandler)
+                stepper.motor.setOnDetachHandler(stepper.__DetachHandler)
+                stepper.motor.setOnPositionChangeHandler(stepper.__PositionHandler)
+            except PhidgetException as e:
+                print "Phidget Exception %i: %s" % (e.code, e.details)
+                return
 
-        try:
-            stepper.motor.setOnAttachHandler(stepper.__AttachHandler)
-            stepper.motor.setOnDetachHandler(stepper.__DetachHandler)
-            stepper.motor.setOnPositionChangeHandler(stepper.__PositionHandler)
-        except PhidgetException as e:
-            print "Phidget Exception %i: %s" % (e.code, e.details)
-            return
+            try:
+                stepper.motor.openPhidget(config_stepper.serial_number)
+            except PhidgetException as e:
+                print "Phidget Exception %i: %s" % (e.code, e.details)
+                return
 
-        try:
-            stepper.motor.openPhidget(config_stepper.serial_number)
-        except PhidgetException as e:
-            print "Phidget Exception %i: %s" % (e.code, e.details)
-            return
+            stepper.__open = True
