@@ -28,6 +28,11 @@ class stepper(object):
             stepper.__attachment = False
 
     @staticmethod
+    def __PositionHandler(event):
+        device = event.device
+        stepper.__active_position = device.position
+
+    @staticmethod
     def setup():
 
         try:
