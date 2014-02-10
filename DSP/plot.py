@@ -39,6 +39,6 @@ class plotter(object):
 
         plt.title("Frequency " + str(frequency) + " Hz")
 
-        plt.show(block = False)
+        plt.show()
 
 

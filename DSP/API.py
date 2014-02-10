@@ -1,6 +1,7 @@
 from config import audio as config_audio
 import pyaudio
 import time
+from stepperControl import StepperControl
 
 class audio(object):
 
@@ -95,7 +96,7 @@ class audio(object):
         audio.__data.append({'frame_data': in_data,
                              'frame_count': frame_count,
                              'frame_time': time.time() - audio.__time,
-                             'frame_position': 0 }) # stepper motor position
+                             'frame_position': StepperControl.stepper_position() }) # stepper motor position
         return (None, pyaudio.paContinue)
 
     def __start_stream(self):
@@ -140,3 +141,4 @@ class audio(object):
 
     def clear_data(self):
         audio.__data = []
+

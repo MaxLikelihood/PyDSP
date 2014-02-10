@@ -184,3 +184,18 @@ class audio(object):
             dataset.append(data[i][frame_element][audio.rfft_map_to_bin(frequency)])
 
         return dataset.index(max(dataset))
+
+
+    @staticmethod
+    def find_max_of_respect_to_for_frequency(data, max_dataset, dependent_dataset, frequency):
+
+        x = []
+        y = []
+        bin_index = audio.rfft_map_to_bin(frequency)
+
+        for i in range(len(data)):
+            x.append(data[i][dependent_dataset])
+            y.append(data[i][max_dataset][bin_index])
+
+        #print "\nPeak At %f Of %f" % (x[y.index(max(y))], max(y))
+        return x[y.index(max(y))]
